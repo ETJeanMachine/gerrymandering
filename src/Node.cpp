@@ -19,7 +19,7 @@ Node** Node::getNeighbours() {
     return neighbours;
 }
 
-std::string Node::toString() {
+std::string Node::str() {
     // TODO
     std::string out = "";
     for (int i = 0; i < neighboursSize; i++) {

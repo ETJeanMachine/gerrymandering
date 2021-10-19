@@ -45,7 +45,7 @@ public:
      * 
      * @return std::string The node as represented by a string.
      */
-    std::string toString();
+    std::string str();
 };
 
 #endif
