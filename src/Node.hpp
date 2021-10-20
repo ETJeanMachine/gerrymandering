@@ -15,9 +15,7 @@
 template<class T = void>
 class Node {
 private:
-    // friend std::ostream& operator<<(std::ostream&, const Node&);
-    std::vector<Node<T>> neighbours; // Array of neighbouring nodes to this node.
-    int neighboursSize; // The current size of the neighbours array
+    std::vector<Node<T>*> neighbours; // Array of neighbouring nodes to this node.
     T* data; // The data stored at this node.
 public:
     /**
@@ -27,12 +25,11 @@ public:
      */
     Node(T* data) {
         Node::data = data;
-        Node::neighboursSize = 0;
     }
     /**
      * @brief Get the data currently at this node.
      *
-     * @return void* Return the data at this node (can be any type).
+     * @return T* Return the data at this node (can be any type).
      */
     T* getData() {
         return data;
@@ -43,15 +40,31 @@ public:
      * @param n The node we wish to add.
      */
     void addNeighbour(Node<T>* n) {
-
+        neighbours.push_back(n);
     }
     /**
      * @brief Get the list of neighbours of this node.
      *
-     * @return Node** All the neighbouring nodes.
+     * @return vector<Node<T>> All the neighbouring nodes.
      */
     std::vector<Node<T>> getNeighbours() {
         return neighbours;
+    }
+    /**
+     * @brief Returns this value as a string.
+     * 
+     * @return std::string The string representation of the node.
+     */
+    std::string str() {
+        std::string str = std::to_string(*data);
+        str += " -> {";
+        for (int i = 0; i < neighbours.size(); i++) {
+            str += std::to_string(*neighbours[i]->data);
+            if (i != neighbours.size() - 1)
+                str += ", ";
+        }
+        str += "}";
+        return str;
     }
 };
 
