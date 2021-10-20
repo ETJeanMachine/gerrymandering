@@ -1,0 +1,11 @@
+# Ignoring files w/o extensions (must run fist)
+*
+!/**/
+!*.*
+
+# Everything else I'd like to exclude (including this file :))
+/.vscode
+/target
+*.exe
+*.out
+*.lock
