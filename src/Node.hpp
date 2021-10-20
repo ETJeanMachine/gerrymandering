@@ -15,15 +15,15 @@
 template<class T = void>
 class Node {
 private:
-    std::vector<Node<T>*> neighbours; // Array of neighbouring nodes to this node.
-    T* data; // The data stored at this node.
+    std::vector<Node<T>> neighbours; // Array of neighbouring nodes to this node.
+    T data; // The data stored at this node.
 public:
     /**
      * @brief Construct a new Node object
      *
      * @param data The data we're storing at this node.
      */
-    Node(T* data) {
+    Node(T data) {
         Node::data = data;
     }
     /**
@@ -31,7 +31,7 @@ public:
      *
      * @return T* Return the data at this node (can be any type).
      */
-    T* getData() {
+    T getData() {
         return data;
     }
     /**
@@ -39,7 +39,7 @@ public:
      *
      * @param n The node we wish to add.
      */
-    void addNeighbour(Node<T>* n) {
+    void addNeighbour(Node<T> n) {
         neighbours.push_back(n);
     }
     /**
