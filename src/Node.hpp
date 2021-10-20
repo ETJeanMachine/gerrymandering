@@ -12,6 +12,7 @@
  */
 class Node {
 private:
+    friend std::ostream& operator<<(std::ostream&, const Node&);
     Node** neighbours; // Array of neighbouring nodes to this node.
     int neighboursSize; // The current size of the neighbours array
     void* data; // The data stored at this node.
@@ -36,16 +37,10 @@ public:
     void addNeighbour(Node* n);
     /**
      * @brief Get the list of neighbours of this node.
-     * 
+     *
      * @return Node** All the neighbouring nodes.
      */
     Node** getNeighbours();
-    /**
-     * @brief Returns this node as a string.
-     * 
-     * @return std::string The node as represented by a string.
-     */
-    std::string str();
 };
 
 #endif

@@ -1,10 +1,11 @@
 #include "Node.hpp"
 #include <string>
+#include <sstream>
 
-Node::Node(void* d) {
-    data = d;
-    neighboursSize = 0;
-    neighbours; // TODO
+Node::Node(void* data) {
+    Node::data = data;
+    Node::neighboursSize = 0;
+    Node::neighbours; // TODO
 }
 
 void* Node::getData() {
@@ -19,11 +20,8 @@ Node** Node::getNeighbours() {
     return neighbours;
 }
 
-std::string Node::str() {
-    // TODO
-    std::string out = "";
-    for (int i = 0; i < neighboursSize; i++) {
-
-    }
-    return out;
+std::ostream& operator<<(std::ostream& strm, const Node& node) {
+    strm << node.data;
+    strm << " -> ";
+    return strm;
 }
